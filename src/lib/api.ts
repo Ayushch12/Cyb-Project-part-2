@@ -19,6 +19,8 @@ export async function getStudents(
   }
 }
 
+
+ ///  ----------- For the delete Section --------------------------------    //
 export async function deleteStudent(id: number) {
   try {
     const res = await axios.delete(`https://api.slingacademy.com/v1/sample-data/users/${id}`);
