@@ -11,17 +11,30 @@ import { Employee } from '@/constants/data';
 import { Edit, MoreHorizontal, Trash } from 'lucide-react';
 import { useRouter } from '@/routes/hooks';
 import { useState } from 'react';
+import axios from 'axios';
 
 interface CellActionProps {
   data: Employee;
+  onDelete: (id: number) => void; // callback function to handle the deletion in parent component
 }
 
-export const CellAction: React.FC<CellActionProps> = ({ data }) => {
-  const [loading] = useState(false);
+export const CellAction: React.FC<CellActionProps> = ({ data, onDelete }) => {
+  const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
-  const onConfirm = async () => {};
+  const onConfirm = async () => {
+    setLoading(true);
+    try {
+      await axios.delete(`https://api.slingacademy.com/v1/sample-data/users/${data.id}`);
+      onDelete(data.id); // invoke the callback to update the parent component state
+      setOpen(false);
+    } catch (error) {
+      console.error('Failed to delete the user:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
