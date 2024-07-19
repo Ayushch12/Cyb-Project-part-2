@@ -29,7 +29,7 @@ export const AlertModal = ({
           Cancel
         </Button>
         <Button disabled={loading} variant="destructive" onClick={onConfirm}>
-          Continue
+          {loading ? 'Processing...' : 'Continue'}
         </Button>
       </div>
     </Modal>

@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 // ---------------------------- Employe API ------------------------------------------------- //
 
 export async function getStudents(
@@ -13,7 +14,17 @@ export async function getStudents(
     );
     return res.data;
   } catch (error) {
-    console.log(error);
+    console.log('Error fetching students:', error);
     return error;
+  }
+}
+
+export async function deleteStudent(id: number) {
+  try {
+    const res = await axios.delete(`https://api.slingacademy.com/v1/sample-data/users/${id}`);
+    return res.data;
+  } catch (error) {
+    console.log('Error deleting student:', error);
+    throw error;
   }
 }
