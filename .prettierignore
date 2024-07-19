@@ -1,3 +1,2 @@
-npm install husky --save-dev
-npx husky install
-npx husky add .husky/pre-commit "npx eslint . && npx prettier --check ."
+node_modules/
+dist/
