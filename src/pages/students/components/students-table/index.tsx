@@ -6,12 +6,7 @@ import StudentTableActions from './student-table-action';
 import { getStudents } from '@/lib/api'; // Ensure the path is correct
 import { Employee } from '@/constants/data'; // Ensure the path is correct
 
-type TStudentsTableProps = {
-  users: Employee[];
-  page: number;
-  totalUsers: number;
-  pageCount: number;
-};
+
 
 const StudentsTable: React.FC = () => {
   const [users, setUsers] = useState<Employee[]>([]);

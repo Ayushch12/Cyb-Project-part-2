@@ -10,10 +10,10 @@ export default function StudentPage() {
   const pageLimit = Number(searchParams.get('limit') || 10);
   const country = searchParams.get('search') || null;
   const offset = (page - 1) * pageLimit;
-  const { data, isLoading } = useGetStudents(offset, pageLimit, country);
-  const users = data?.users;
-  const totalUsers = data?.total_users; //1000
-  const pageCount = Math.ceil(totalUsers / pageLimit);
+  const { isLoading } = useGetStudents(offset, pageLimit, country);
+  // const users = data?.users;
+  // const totalUsers = data?.total_users; //1000
+  // const pageCount = Math.ceil(totalUsers / pageLimit);
 
   if (isLoading) {
     return (
@@ -31,10 +31,10 @@ export default function StudentPage() {
     <div className="p-5">
       <PageHead title="Student Management | App" />
       <StudentsTable
-        users={users}
-        page={page}
-        totalUsers={totalUsers}
-        pageCount={pageCount}
+        // users={users}
+        // page={page}
+        // totalUsers={totalUsers}
+        // pageCount={pageCount}
       />
     </div>
   );
